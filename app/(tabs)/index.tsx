@@ -4,8 +4,37 @@ import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { initializeApp } from 'firebase/app';
+
+
+const auth = getAuth();
+signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyA3VwhoItvaf0qH7FFEeP6ptk80-1wZXmY",
+    authDomain: "potly-53b8d.firebaseapp.com",
+    projectId: "potly-53b8d",
+    storageBucket: "potly-53b8d.appspot.com",
+    messagingSenderId: "899214855038",
+    appId: "1:899214855038:web:37ac44292a5c8fd3fb012f",
+    measurementId: "G-HMRE76089R"
+  };
+
+
+const app = initializeApp(firebaseConfig);
 
 export default function HomeScreen() {
+  
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
